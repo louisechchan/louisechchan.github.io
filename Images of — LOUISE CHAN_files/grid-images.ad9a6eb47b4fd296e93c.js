@@ -1,0 +1,1 @@
+(window.wpJsonpTemplateSections=window.wpJsonpTemplateSections||[]).push([[65],{346:function(o,n,e){"use strict";e.r(n);var a=e(34),t=e(20),i=e(5);n.default=function(o){var n=function(){a.a.loadAllLazy({load:!0,mode:"cover",useAdvancedPositioning:!0},o)};return n(),t.a.on(n,i.e),{loadImages:n,destroy:function(){t.a.off(n)}}}}}]);
