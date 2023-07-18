@@ -43,7 +43,7 @@ body {
   font-weight: 600;
   text-decoration-color: #000;
   text-underline-offset: 2.5px;
-  background-image: linear-gradient(to right, #f492a2, #f492a2 50%, #000 50%);
+  background-image: linear-gradient(to right, #a7a6a6, #a7a6a6 50%, #000 50%);
   background-size: 200% 100%;
   background-position: -100%;
   -webkit-background-clip: text;
@@ -54,7 +54,7 @@ body {
 
 #change-text:before {
   content: "";
-  background: #f492a2;
+  background: #a7a6a6;
   display: block;
   position: absolute;
   bottom: -3px;
