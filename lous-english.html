@@ -7784,7 +7784,9 @@
                             <span
                               class="sqsrte-text-color--custom"
                               style="color: #343434"
-                              ><a href="https://lousenglish.com" id="change-text"
+                              ><a
+                                href="https://lousenglish.com"
+                                id="change-text"
                                 ><b>Enhancing Language Fluency</b></a
                               >
                               for CEOs and Management Professionals for Over 10
@@ -7972,6 +7974,91 @@
       id="yui3-css-stamp"
       style="position: absolute !important; visibility: hidden !important"
     ></div>
+
+    <!-- GSAP + ScrambleTextPlugin for text reveal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+    <script>
+      // Custom scramble text reveal effect
+      document.addEventListener("DOMContentLoaded", function () {
+        const scrambleChars = "!<>-_\\/[]{}—=+*^?#________";
+
+        const targets = document.querySelectorAll(
+          ".sqs-block-html .sqs-block-content > :first-child"
+        );
+
+        targets.forEach((el) => {
+          // Skip "Enhancing Language Fluency..." text
+          if (el.textContent.includes("Enhancing Language Fluency")) return;
+          const originalText = el.textContent;
+
+          // Store original HTML to preserve links and formatting
+          const originalHTML = el.innerHTML;
+
+          // Create a text-only version for scrambling
+          el.dataset.originalHtml = originalHTML;
+          el.dataset.originalText = originalText;
+
+          // Initially show scrambled text
+          el.textContent = originalText
+            .split("")
+            .map((char) =>
+              char === " "
+                ? " "
+                : scrambleChars[
+                    Math.floor(Math.random() * scrambleChars.length)
+                  ]
+            )
+            .join("");
+
+          // Set up scroll trigger for each element
+          gsap.to(el, {
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true,
+              onEnter: () => scrambleReveal(el, originalText, originalHTML),
+            },
+          });
+        });
+
+        function scrambleReveal(element, finalText, finalHTML) {
+          const duration = 1.2;
+          const frameRate = 30;
+          const totalFrames = duration * frameRate;
+          let frame = 0;
+
+          const interval = setInterval(() => {
+            frame++;
+            const progress = frame / totalFrames;
+            const revealedLength = Math.floor(finalText.length * progress);
+
+            let displayText = "";
+            for (let i = 0; i < finalText.length; i++) {
+              if (finalText[i] === " ") {
+                displayText += " ";
+              } else if (i < revealedLength) {
+                displayText += finalText[i];
+              } else {
+                displayText +=
+                  scrambleChars[
+                    Math.floor(Math.random() * scrambleChars.length)
+                  ];
+              }
+            }
+
+            element.textContent = displayText;
+
+            if (frame >= totalFrames) {
+              clearInterval(interval);
+              // Restore original HTML with links and formatting
+              element.innerHTML = finalHTML;
+            }
+          }, 1000 / frameRate);
+        }
+      });
+    </script>
   </body>
   <div
     id="shopback-app"
