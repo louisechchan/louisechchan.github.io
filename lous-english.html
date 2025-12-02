@@ -7989,8 +7989,9 @@
         );
 
         targets.forEach((el) => {
-          // Skip "Enhancing Language Fluency..." text
+          // Skip specific texts
           if (el.textContent.includes("Enhancing Language Fluency")) return;
+          if (el.textContent.includes("booking@louisecchan.com")) return;
           const originalText = el.textContent;
 
           // Store original HTML to preserve links and formatting
