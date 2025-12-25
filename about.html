@@ -7207,6 +7207,35 @@
               }
             }
           </style>
+          <style>
+            /* Left-to-right underline hover effect for specific links */
+            .sqs-block-html a {
+              position: relative;
+              text-decoration: none !important;
+            }
+            
+            .sqs-block-html a span {
+              position: relative;
+              display: inline-block;
+              font-weight: 500 !important;
+              color: black !important;
+            }
+            
+            .sqs-block-html a span::after {
+              content: '';
+              position: absolute;
+              width: 0;
+              height: 1.5px;
+              bottom: 0;
+              left: 0;
+              background-color: currentColor;
+              transition: width 0.4s ease-in-out;
+            }
+            
+            .sqs-block-html a:hover span::after {
+              width: 100%;
+            }
+          </style>
           <div
             class="header-border"
             data-header-style="dynamic"
