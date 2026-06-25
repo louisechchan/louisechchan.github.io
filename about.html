@@ -6987,6 +6987,17 @@
     </style>
     <style shopback-extension-v7-0-10="" data-styled-version="4.2.0"></style>
     <style>
+      .clients-label-mobile {
+        display: none;
+      }
+      @media (max-width: 640px) {
+        .clients-label-desktop {
+          display: none;
+        }
+        .clients-label-mobile {
+          display: inline;
+        }
+      }
       @media (max-width: 1024px) {
         .page-section h1,
         .page-section h2,
@@ -7938,7 +7949,7 @@
                             <span
                               class="sqsrte-text-color--custom"
                               style="color: #343434"
-                              ><strong>SOME CLIENTS I'VE WORKED WITH</strong></span
+                              ><strong><span class="clients-label-desktop">SOME CLIENTS I'VE WORKED WITH</span><span class="clients-label-mobile">Client List</span></strong></span
                             >
                           </p>
                         </div>
